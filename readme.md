@@ -22,7 +22,7 @@ The Sedenion Rule Creator supports a versatile and intuitive syntax for defining
 
 - Comments are denoted with double slashes at the start of the line (`//`) and last the entire file. Comments are ignored.
 
-- `$Literal[n]`: Represents fixed constants, such as numerical values or specific characters. For instance, `$Literal1` or `$Literal42`.
+- `$L[n]`: Represents fixed constants, such as numerical values or specific characters. For instance, `$L1` or `$Ll42`.
 
 - `$[n]`: Acts as a placeholder or wildcard, matching any subexpression in the corresponding position on the left-hand side (pattern) of the rule. Unlike `$Literal[n]`, this symbol is not limited to literal values and can encompass any expression. Examples include `$1` or `$42`.
 
