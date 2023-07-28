@@ -34,7 +34,7 @@ fn main() {
         }
         
         buffer.push_str("\n\t]\n}");
-        writeln!(file, "fn get_rules() -> [Rule; {rule_count}] {{\n\t[\n{buffer}").unwrap();
+        writeln!(file, "fn get_rules() -> [Axiom; {rule_count}] {{\n\t[\n{buffer}").unwrap();
     }
 }
 
