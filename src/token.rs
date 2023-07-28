@@ -1,3 +1,5 @@
+use std::fmt::{Debug, Display};
+
 #[derive(Debug, Clone)]
 pub enum Expr {
     Number(f64),
@@ -25,37 +27,12 @@ pub enum Op {
     Power,
 }
 
-impl ToString for Expr {
-    fn to_string(&self) -> String {
-        let mut out = String::new();
+impl Display for Expr {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Expr::Number(val) => out.push_str(&val.to_string()),
-            Expr::UnaryMinus(expr) => out.push_str(&format!("-({})", expr.to_string())),
-            Expr::BinOp { lhs, op, rhs } => {
-                let lhs = lhs.to_string();
-                let rhs = rhs.to_string();
-                let op = match op {
-                    Op::Add => '+',
-                    Op::Subtract => '-',
-                    Op::Multiply => '*',
-                    Op::Divide => '/',
-                    Op::Modulo => '%',
-                    Op::Power => '^',
-                };
-
-                out.push_str(&format!("({lhs}{op}{rhs})"));
-            }
-            Expr::Function { name, args } => {
-                let args = args
-                    .into_iter()
-                    .map(|arg| arg.to_string())
-                    .collect::<Vec<String>>()
-                    .join(", ");
-                out.push_str(&format!("{name}({args})"));
-            }
-            Expr::Literal(val) => out.push_str(&format!("$Literal{val}")),
-            Expr::Symbol(val) => out.push_str(&format!("${val}")),
+            Expr::BinOp { lhs, op, rhs } => write!(f, "BinOp {{ lhs: Box::new({lhs}), op: {op:?}, rhs: Box::new({rhs})}}"),
+            Expr::UnaryMinus(expr) => write!(f, "UnaryMinus(Box::new({expr}))"),
+            _ => write!(f, "{self:?}"),
         }
-        return out;
     }
 }

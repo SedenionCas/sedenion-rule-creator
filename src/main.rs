@@ -29,7 +29,7 @@ fn main() {
             let from = parse(&line).unwrap();
             let line = lines.next().unwrap().unwrap();
             let to = parse(&line).unwrap();
-            buffer.push_str(&format!("\n\t\tAxiom::new(\n\t\t\t{from:?},\n\t\t\t{to:?}\n\t\t),"));
+            buffer.push_str(&format!("\n\t\tAxiom::new(\n\t\t\t{from},\n\t\t\t{to}\n\t\t),"));
             rule_count += 1;
         }
         
