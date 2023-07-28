@@ -19,6 +19,10 @@ fn main() {
 
         for line in lines {
             if let Ok(rule) = line {
+                if rule.starts_with("//") {
+                    continue;
+                }
+
                 if rule.len() != 0 {
                     let rule = parse(&rule).unwrap();
                     writeln!(file, "{rule:?}").unwrap();
