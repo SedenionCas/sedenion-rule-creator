@@ -8,7 +8,7 @@ The Sedenion Rule Creator is a powerful tool designed to facilitate the creation
 
 To use the Sedenion Rule Creator effectively, follow these simple steps:
 
-1. Begin by defining your desired rules in the `rules.in` file. The syntax for expressing these rules is comprehensively described [here](https://github.com/SedenionCas/sedenion-rule-creator#Syntax).
+1. Begin by defining your desired rules in the `rules.in` file. The syntax for expressing these rules is comprehensively described [here](https://github.com/SedenionCas/sedenion-rule-creator#syntax).
 
 2. Once the rules have been specified in the `rules.in` file, proceed to build and run this repository using the command `cargo run`.
 
