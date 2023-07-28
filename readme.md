@@ -12,7 +12,7 @@ To use the Sedenion Rule Creator effectively, follow these simple steps:
 
 2. Once the rules have been specified in the `rules.in` file, proceed to build and run this repository using the command `cargo run`.
 
-3. Upon successful execution, the newly generated rules will be made available in the `rules.out` file, ready for integration into the Sedenion Engine.
+3. Upon successful execution, the newly generated rules will be made available in the `rules.rs` file, ready for integration into the Sedenion Engine.
 
 ## Syntax
 
@@ -20,7 +20,7 @@ The Sedenion Rule Creator supports a versatile and intuitive syntax for defining
 
 - Numbers, functions, and operands follow the conventions established in other Sedenion products, and they are matched precisely within the engine.
 
-- Comments are denoted with double slashes at the start of the line (`//`) and last the entire file. Comments are ignored.
+- Comments are denoted with double slashes at the start of the line (`//`) and last the entire file. Comments are ignored. There should not be comments between "from" and "to" states.
 
 - `$L[n]`: Represents fixed constants, such as numerical values or specific characters. For instance, `$L1` or `$Ll42`.
 

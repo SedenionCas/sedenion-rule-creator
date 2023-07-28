@@ -10,27 +10,31 @@ mod token;
 
 fn main() {
     if let Ok(lines) = read_lines("rules.in") {
-        let mut file = File::create("rules.out").unwrap();
+        File::create("rules.rs").unwrap();
+        let mut buffer = String::new();
         let mut file = OpenOptions::new()
             .write(true)
             .append(true)
-            .open("rules.out")
+            .open("rules.rs")
             .unwrap();
-
-        for line in lines {
-            if let Ok(rule) = line {
-                if rule.starts_with("//") {
-                    continue;
-                }
-
-                if rule.len() != 0 {
-                    let rule = parse(&rule).unwrap();
-                    writeln!(file, "{rule:?}").unwrap();
-                } else {
-                    writeln!(file, "").unwrap();
-                }
+        let mut rule_count = 0;
+        
+        let mut lines = lines;
+        while let Some(line) = lines.next() {
+            let line = line.unwrap();
+            if line.starts_with("//") || line.len() == 0 {
+                continue;
             }
+            
+            let from = parse(&line).unwrap();
+            let line = lines.next().unwrap().unwrap();
+            let to = parse(&line).unwrap();
+            buffer.push_str(&format!("\n\t\tAxiom::new(\n\t\t\t{from:?},\n\t\t\t{to:?}\n\t\t),"));
+            rule_count += 1;
         }
+        
+        buffer.push_str("\n\t]\n}");
+        writeln!(file, "fn get_rules() -> [Rule; {rule_count}] {{\n\t[\n{buffer}").unwrap();
     }
 }
 
