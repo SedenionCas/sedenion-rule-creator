@@ -1,4 +1,8 @@
 # Sedenion Rule Creator
+> # ⚠️**This repository has been deprecated and thus should not be used!**⚠️
+>
+>We no longer use this repository to create new rules.
+---
 
 ## Overview
 
